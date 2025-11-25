@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharan P | Portfolio (Themed)</title>
+    
+
+<script src="https://cdn.tailwindcss.com"></script>
+    
+
+<script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom styles for smoother scrolling and fonts */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* --- Theme Variables --- */
+        [data-theme='dark'] {
+            /* Designed Dark Theme Colors */
+            --color-bg-primary: #111111; /* Deep Charcoal */
+            --color-bg-secondary: #18181B; /* Darker slate gray for raised sections */
+            --color-bg-card: #1f2937; /* Slightly lighter gray for nested cards */
+            --color-text-primary: #ffffff;
+            --color-text-secondary: #a1a1aa; /* Zinc-400 for accents/bullets */
+            --color-link-hover: #f4f4f5;
+            --color-border-main: #ffffff33; /* White/50 */
+            --color-shadow-hover: #0088ff70; /* Light blue shadow for highlight */
+            --color-pattern-dot: #1f2937; /* Dot color for dark theme */
+            --color-accent: #0099ff; /* Bright accent blue */
+            --color-accent-secondary: #ff00ff; /* A magenta accent */
+        }
+
+        [data-theme='light'] {
+            --color-bg-primary: #ffffff;
+            --color-bg-secondary: #f3f4f6; /* Light Gray */
+            --color-bg-card: #ffffff;
+            --color-text-primary: #000000;
+            --color-text-secondary: #4b5563;
+            --color-link-hover: #4b5563;
+            --color-border-main: #00000033;
+            --color-shadow-hover: #0099ff50;
+            --color-pattern-dot: #e5e7eb;
+            --color-accent: #1e40af;
+            --color-accent-secondary: #8b5cf6; /* A purple accent */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            transition: background-color 0.3s, color 0.3s;
+            
+            /* --- SUBTLE GEOMETRIC DOT PATTERN --- */
+            background-image: 
+                radial-gradient(circle at 1px 1px, var(--color-pattern-dot) 1px, transparent 0),
+                radial-gradient(circle at 1px 1px, var(--color-pattern-dot) 1px, transparent 0);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-attachment: fixed; 
+        }
+        
+        /* Utility classes using CSS variables */
+        .theme-bg-primary { background-color: var(--color-bg-primary); }
+        .theme-bg-secondary { background-color: var(--color-bg-secondary); }
+        .theme-bg-card { background-color: var(--color-bg-card); }
+        .theme-text-primary { color: var(--color-text-primary); }
+        .theme-text-secondary { color: var(--color-text-secondary); }
+        .theme-border { border-color: var(--color-border-main); }
+        /* Adjusted shadow for better theme contrast */
+        .theme-shadow-hover:hover { box-shadow: 0 0 25px var(--color-shadow-hover); }
+        .theme-accent-text { color: var(--color-accent); }
+        .theme-accent-border { border-color: var(--color-accent) !important; }
+
+        /* Custom focus styles for accessibility */
+        :focus-visible {
+            outline: 2px solid var(--color-text-primary); 
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        /* Specific style for transparent sections to see the background pattern */
+        .pattern-overlay {
+            background-color: var(--color-bg-primary);
+        }
+        
+        /* Desktop: Make nav background slightly translucent to show pattern */
+        @media (min-width: 640px) {
+            .nav-bg-overlay {
+                background-color: var(--color-bg-primary);
+                opacity: 0.95; /* 95% opacity */
+                backdrop-filter: blur(5px);
+            }
+        }
+
+        /* Design elements for the image in the hero section */
+        .image-container {
+            position: relative;
+            /* To contain pseudo-elements */
+            width: 240px; /* Match w-60 */
+            height: 240px; /* Match h-60 */
+        }
+
+        .image-container::before,
+        .image-container::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%; /* Circular shapes */
+            z-index: 0;
+            transition: all 0.5s ease-in-out;
+            pointer-events: none; /* Allows clicks to pass through to the image */
+        }
+
+        .image-container::before {
+            width: 100%;
+            height: 100%;
+            top: 10px;
+            right: 10px;
+            border: 4px solid var(--color-accent);
+            transform: rotate(-20deg);
+            opacity: 0.6;
+        }
+
+        .image-container::after {
+            width: 100%;
+            height: 100%;
+            bottom: 10px;
+            left: 10px;
+            border: 4px solid var(--color-accent-secondary); /* A second accent color */
+            transform: rotate(20deg);
+            opacity: 0.6;
+        }
+        
+        .image-container:hover::before {
+             transform: rotate(-30deg) scale(1.05);
+             opacity: 0.8;
+             top: 0px;
+             right: 0px;
+        }
+
+        .image-container:hover::after {
+             transform: rotate(30deg) scale(1.05);
+             opacity: 0.8;
+             bottom: 0px;
+             left: 0px;
+        }
+        
+        /* Card border enhancement */
+        .card-with-accent {
+            position: relative;
+            overflow: hidden;
+            border-top: 2px solid var(--color-accent);
+            border-left: 2px solid var(--color-accent);
+            border-top-left-radius: 12px;
+            
+        }
+
+        .card-with-accent:hover {
+            border-color: var(--color-accent); /* Highlight on hover */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    
+
+<nav class="sticky top-0 z-50 nav-bg-overlay shadow-xl border-b theme-border transition duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+
+<a href="#hero" class="text-2xl font-bold theme-text-primary hover:theme-accent-text transition duration-300">
+                    Sharan P
+                </a>
+                
+
+<div class="hidden sm:ml-6 sm:flex sm:space-x-8 items-center">
+                    <a href="#skills" class="theme-text-primary hover:theme-accent-text px-3 py-2 rounded-md text-sm font-medium transition duration-300">Skills</a>
+                    <a href="#projects" class="theme-text-primary hover:theme-accent-text px-3 py-2 rounded-md text-sm font-medium transition duration-300">Projects</a>
+                    <a href="#contact" class="theme-text-primary hover:theme-accent-text px-3 py-2 rounded-md text-sm font-medium transition duration-300">Contact</a>
+                    
+                    
+
+<button id="theme-toggle" class="p-2 rounded-full theme-text-primary hover:bg-gray-800 transition duration-300 ml-4 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-label="Toggle Dark/Light Mode">
+                        
+
+<i data-lucide="moon" id="moon-icon" class="h-6 w-6"></i>
+                        <i data-lucide="sun" id="sun-icon" class="h-6 w-6 hidden"></i>
+                    </button>
+                </div>
+                
+
+<div class="sm:hidden flex items-center">
+                    
+
+<button id="mobile-theme-toggle" class="p-2 rounded-full theme-text-primary hover:bg-gray-800 transition duration-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-label="Toggle Dark/Light Mode">
+                        <i data-lucide="moon" id="mobile-moon-icon" class="h-6 w-6"></i>
+                        <i data-lucide="sun" id="mobile-sun-icon" class="h-6 w-6 hidden"></i>
+                    </button>
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md theme-text-primary hover:text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white ml-2" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i data-lucide="menu" id="menu-icon" class="block h-6 w-6"></i>
+                        <i data-lucide="x" id="close-icon" class="hidden h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        
+
+<div class="sm:hidden hidden nav-bg-overlay" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#skills" class="theme-text-primary hover:bg-gray-800 hover:theme-accent-text block px-3 py-2 rounded-md text-base font-medium transition duration-300">Skills</a>
+                <a href="#projects" class="theme-text-primary hover:bg-gray-800 hover:theme-accent-text block px-3 py-2 rounded-md text-base font-medium transition duration-300">Projects</a>
+                <a href="#contact" class="theme-text-primary hover:bg-gray-800 hover:theme-accent-text block px-3 py-2 rounded-md text-base font-medium transition duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        
+
+<section id="hero" class="pt-8 pb-16 md:pt-20 md:pb-24 flex flex-col md:flex-row items-center justify-between gap-12 pattern-overlay rounded-xl p-6 md:p-10">
+            
+            
+
+<div class="w-full md:w-1/2 text-center md:text-left order-2 md:order-1">
+                
+
+<p class="text-xl md:text-2xl font-semibold theme-text-primary mb-2">Hello, I'm</p>
+
+                
+
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight theme-text-primary mb-2">
+                    Sharan P
+                </h1>
+                
+                
+
+<h2 class="text-2xl md:text-3xl font-bold theme-accent-text mb-4">
+                    Student at Panimalar Engineering College
+                </h2>
+
+                
+
+<p class="text-xl theme-text-primary mb-8 max-w-lg md:max-w-full mx-auto md:mx-0">
+                    I’m a passionate developer focused on Python programming and modern web development. I enjoy building efficient applications and creating clean, responsive web solutions. I am also one of the founders of 
+                    <a href="https://sparklance-solution.netlify.app/" target="_blank" rel="noopener noreferrer" class="theme-accent-text hover:underline font-bold transition duration-300 inline-flex items-center">
+                        SparLance Solutions <i data-lucide="external-link" class="ml-1 h-5 w-5"></i>
+                    </a>, which focuses on delivering innovative software solutions.
+                </p>
+                <div class="flex space-x-4 justify-center md:justify-start">
+                    
+
+<a href="#contact" class="px-6 py-3 bg-gray-800 text-white font-medium rounded-lg shadow-lg hover:bg-gray-700 transition duration-300 transform hover:scale-105 border border-white">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+            
+            
+
+<div class="flex-shrink-0 order-1 md:order-2 image-container relative">
+                <img src="sharan.jpg" 
+                     alt="Sharan P Profile Picture" 
+                     class="rounded-full shadow-2xl w-60 h-60 object-cover border-4 theme-border relative z-10"
+                     onerror="this.onerror=null; this.src='https://placehold.co/240x240/1f2937/ccf0ff?text=Image+Not+Found';">
+            </div>
+        </section>
+        
+        <hr class="my-12 border-t-2 theme-accent-border opacity-30">
+
+        
+
+<section id="skills" class="py-16 theme-bg-secondary rounded-xl shadow-2xl p-8 mt-12 opacity-[0.98]">
+            <h2 class="text-4xl font-bold text-center theme-text-primary mb-12">My Skills</h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                
+
+<div class="theme-bg-card p-6 rounded-xl shadow-md transition duration-300 theme-shadow-hover theme-border card-with-accent">
+                    <h3 class="text-2xl font-semibold theme-text-primary mb-4 flex items-center">
+                        
+
+<i data-lucide="python" class="mr-2 h-7 w-7 theme-accent-text"></i> Python Developer
+                    </h3>
+                    <ul class="space-y-3 theme-text-primary list-none">
+                        <li class="flex items-start">
+                            
+
+<span class="theme-text-secondary mr-2">&bull;</span>
+                            <span>Python Language Fundamentals</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="theme-text-secondary mr-2">&bull;</span>
+                            <span>Flask Web Development</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="theme-text-secondary mr-2">&bull;</span>
+                            <span>GUI Development (Tkinter)</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                
+
+<div class="theme-bg-card p-6 rounded-xl shadow-md transition duration-300 theme-shadow-hover theme-border card-with-accent">
+                    <h3 class="text-2xl font-semibold theme-text-primary mb-4 flex items-center">
+                        
+
+<i data-lucide="server" class="mr-2 h-6 w-6 theme-accent-text"></i> Java Developer
+                    </h3>
+                    <ul class="space-y-3 theme-text-primary list-none">
+                        <li class="flex items-start">
+                            <span class="theme-text-secondary mr-2">&bull;</span>
+                            <span>Java</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="theme-text-secondary mr-2">&bull;</span>
+                            <span>Java Swing (GUI)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="theme-text-secondary mr-2">&bull;</span>
+                            <span>Object-Oriented Programming (OOP)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                
+
+<div class="theme-bg-card p-6 rounded-xl shadow-md transition duration-300 theme-shadow-hover theme-border card-with-accent">
+                    <h3 class="text-2xl font-semibold theme-text-primary mb-4 flex items-center">
+                        
+
+<i data-lucide="monitor" class="mr-2 h-6 w-6 theme-accent-text"></i> Front End Developer
+                    </h3>
+                    <ul class="space-y-3 theme-text-primary list-none">
+                        <li class="flex items-start">
+                            <span class="theme-text-secondary mr-2">&bull;</span>
+                            <span>HTML5</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="theme-text-secondary mr-2">&bull;</span>
+                            <span>CSS</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="theme-text-secondary mr-2">&bull;</span>
+                            <span>JavaScript</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-12 border-t-2 theme-accent-border opacity-30">
+
+
+        
+
+<section id="projects" class="py-16">
+            <h2 class="text-4xl font-bold text-center theme-text-primary mb-12">Featured Projects</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+
+                
+
+<div class="theme-bg-secondary rounded-xl shadow-2xl overflow-hidden transform transition duration-500 hover:scale-[1.02] border theme-border card-with-accent opacity-[0.98]">
+                    <img src="https://placehold.co/600x400/4c34d3/ffffff?text=Java+GUI+App" 
+                         alt="Student Information System Mockup" 
+                         class="w-full h-56 object-cover"> 
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold theme-text-primary mb-3">Student Information System</h3>
+                        <p class="theme-text-primary mb-4">
+                            A robust desktop application for managing student records, grades, and administrative tasks, built with a rich Graphical User Interface (GUI) using Java Swing and utilizing MongoDB for flexible, non-relational data storage.
+                        </p>
+                        
+
+<div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-white/10 theme-text-primary text-xs font-medium px-2.5 py-0.5 rounded-full">Java</span>
+                            <span class="bg-white/10 theme-text-primary text-xs font-medium px-2.5 py-0.5 rounded-full">Java Swing (GUI)</span>
+                            <span class="bg-white/10 theme-text-primary text-xs font-medium px-2.5 py-0.5 rounded-full">MongoDB (NoSQL)</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            
+
+<a href="https://github.com/Sharan242007/Project.git" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline font-medium flex items-center transition duration-300">
+                                View Project on GitHub <i data-lucide="github" class="ml-1 h-4 w-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+<div class="theme-bg-secondary rounded-xl shadow-2xl overflow-hidden transform transition duration-500 hover:scale-[1.02] border theme-border card-with-accent opacity-[0.98]">
+                    <img src="https://placehold.co/600x400/ef4444/ffffff?text=Flask+MongoDB+Web+App" alt="Railway Reservation System Mockup" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold theme-text-primary mb-3">Railway Reservation System</h3>
+                        <p class="theme-text-primary mb-4">
+                            A functional reservation system for booking and managing train tickets. Developed as a web application using Python's Flask framework for the backend and MongoDB for flexible NoSQL data management.
+                        </p>
+                        
+
+<div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-white/10 theme-text-primary text-xs font-medium px-2.5 py-0.5 rounded-full">Python</span>
+                            <span class="bg-white/10 theme-text-primary text-xs font-medium px-2.5 py-0.5 rounded-full">Flask</span>
+                            <span class="bg-white/10 theme-text-primary text-xs font-medium px-2.5 py-0.5 rounded-full">MongoDB (NoSQL)</span>
+                            <span class="bg-white/10 theme-text-primary text-xs font-medium px-2.5 py-0.5 rounded-full">HTML & CSS</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            
+
+<a href="https://github.com/Sharan242007/Railway-Reservation.git" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline font-medium flex items-center transition duration-300">
+                                View Project on GitHub <i data-lucide="github" class="ml-1 h-4 w-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr class="my-12 border-t-2 theme-accent-border opacity-30">
+
+
+        
+
+<section id="contact" class="py-16">
+            <h2 class="text-4xl font-bold text-center theme-text-primary mb-12">Get In Touch</h2>
+            <div class="max-w-xl mx-auto theme-bg-secondary p-8 rounded-xl shadow-2xl text-center border theme-border opacity-[0.98] card-with-accent">
+                <p class="text-lg theme-text-primary mb-8">
+                    I am always open to new opportunities and collaborations. Connect with me directly through email or LinkedIn:
+                </p>
+
+                
+
+<div class="flex flex-col space-y-8">
+                    
+                    
+
+<div class="flex flex-col items-center justify-center space-y-4">
+                        
+
+<i data-lucide="mail" class="h-10 w-10 theme-accent-text"></i>
+                        
+
+<a href="mailto:sharan12318@gmail.com" class="text-2xl font-bold theme-text-primary hover:theme-accent-text transition duration-300 transform hover:scale-105" aria-label="Email sharan12318@gmail.com">
+                            sharan12318@gmail.com
+                        </a>
+                    </div>
+
+                    
+
+<div class="flex flex-col items-center justify-center space-y-4">
+                        
+
+<i data-lucide="linkedin" class="h-10 w-10 theme-accent-text"></i>
+                        
+
+<a href="https://www.linkedin.com/in/sharan-p-6a994735b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="text-2xl font-bold theme-text-primary hover:theme-accent-text transition duration-300 transform hover:scale-105" aria-label="View Sharan P LinkedIn Profile">
+                            View My LinkedIn Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    
+
+<footer class="nav-bg-overlay theme-text-primary mt-12 border-t theme-border">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-center md:text-left mb-4 md:mb-0 theme-text-primary">&copy; <span id="current-year"></span> Sharan P. All rights reserved.</p>
+            <div class="flex space-x-6">
+                <!-- Removed LinkedIn icon from footer --></div>
+        </div>
+    </footer>
+
+    
+
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Lucide icons
+            lucide.createIcons();
+
+            // --- THEME TOGGLE LOGIC ---
+            const html = document.documentElement;
+            const toggleButton = document.getElementById('theme-toggle');
+            const mobileToggleButton = document.getElementById('mobile-theme-toggle');
+
+            // Icon references for desktop and mobile toggles
+            const moonIcon = document.getElementById('moon-icon');
+            const sunIcon = document.getElementById('sun-icon');
+            const mobileMoonIcon = document.getElementById('mobile-moon-icon');
+            const mobileSunIcon = document.getElementById('mobile-sun-icon');
+
+            // Function to apply the theme based on the theme string ('dark' or 'light')
+            function applyTheme(theme) {
+                if (theme === 'light') {
+                    html.setAttribute('data-theme', 'light');
+                    localStorage.setItem('theme', 'light');
+                    // In Light Mode, show MOON icon (to suggest switching back to Dark)
+                    moonIcon.classList.remove('hidden');
+                    sunIcon.classList.add('hidden');
+                    mobileMoonIcon.classList.remove('hidden');
+                    mobileSunIcon.classList.add('hidden');
+                } else {
+                    html.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                    // In Dark Mode, show SUN icon (to suggest switching to Light)
+                    moonIcon.classList.add('hidden');
+                    sunIcon.classList.remove('hidden');
+                    mobileMoonIcon.classList.add('hidden');
+                    mobileSunIcon.classList.remove('hidden');
+                }
+                lucide.createIcons(); // Re-render icons
+            }
+
+            // Function to toggle the theme
+            function toggleTheme() {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                applyTheme(newTheme);
+            }
+
+            // Apply theme on initial load (check local storage or default to dark)
+            const storedTheme = localStorage.getItem('theme');
+            if (storedTheme) {
+                applyTheme(storedTheme);
+            } else {
+                // Default to dark theme if no preference is stored
+                applyTheme('dark');
+            }
+
+            // Event listeners for theme toggle buttons
+            toggleButton.addEventListener('click', toggleTheme);
+            mobileToggleButton.addEventListener('click', toggleTheme);
+
+            // --- MOBILE MENU LOGIC ---
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            function toggleMobileMenu() {
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
+                menuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+                
+                // Toggle Lucide icons for the menu button itself
+                if (!isExpanded) {
+                    // Menu opened: hide menu, show close
+                    menuIcon.style.display = 'none';
+                    closeIcon.style.display = 'block';
+                } else {
+                    // Menu closed: show menu, hide close
+                    menuIcon.style.display = 'block';
+                    closeIcon.style.display = 'none';
+                }
+                
+                lucide.createIcons(); // Re-create icons to ensure visibility
+            }
+
+            // Close mobile menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    // Force close the menu
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+            menuButton.addEventListener('click', toggleMobileMenu);
+
+
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
