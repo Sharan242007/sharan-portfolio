@@ -3,590 +3,608 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sharan P - Portfolio</title>
+    <title>Sharan P | Software Developer</title>
     
-    <!-- Load Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Lucide Icons -->
-<script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- AOS Animation Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
     <style>
-        /* Custom styles for smoother scrolling and fonts */
+        /* --- CORE SETTINGS --- */
         html {
             scroll-behavior: smooth;
-        }
-
-        /* --- Theme Variables (Restored) --- */
-        [data-theme='dark'] {
-            /* Designed Dark Theme Colors */
-            --color-bg-primary: #111111; /* Deep Charcoal */
-            --color-bg-secondary: #18181B; /* Darker slate gray for raised sections */
-            --color-bg-card: #1f2937; /* Slightly lighter gray for nested cards */
-            --color-text-primary: #ffffff;
-            --color-text-secondary: #a1a1aa; /* Zinc-400 for accents/bullets */
-            --color-link-hover: #f4f4f5;
-            --color-border-main: #ffffff33; /* White/50 */
-            --color-shadow-hover: #0088ff70; /* Light blue shadow for highlight */
-            --color-pattern-dot: #1f2937; /* Dot color for dark theme */
-            --color-accent: #0099ff; /* Bright accent blue */
-            --color-accent-secondary: #ff00ff; /* A magenta accent */
-            
-            /* Tag Text Colors (Light for dark background) */
-            --color-tag-text-blue: #93c5fd; /* blue-300 */
-            --color-tag-text-indigo: #a5b4fc; /* indigo-300 */
-        }
-
-        [data-theme='light'] {
-            --color-bg-primary: #ffffff;
-            --color-bg-secondary: #f3f4f6; /* Light Gray */
-            --color-bg-card: #ffffff;
-            --color-text-primary: #000000;
-            --color-text-secondary: #4b5563;
-            --color-link-hover: #4b5563;
-            --color-border-main: #00000033;
-            --color-shadow-hover: #0099ff50;
-            --color-pattern-dot: #e5e7eb;
-            --color-accent: #1e40af;
-            --color-accent-secondary: #8b5cf6; /* A purple accent */
-
-            /* Tag Text Colors (Dark for light background) */
-            --color-tag-text-blue: #1e40af; /* blue-800 for contrast */
-            --color-tag-text-indigo: #3730a3; /* indigo-800 for contrast */
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--color-bg-primary);
             color: var(--color-text-primary);
-            transition: background-color 0.3s, color 0.3s;
-            
-            /* --- SUBTLE GEOMETRIC DOT PATTERN --- */
-            background-image: 
-                radial-gradient(circle at 1px 1px, var(--color-pattern-dot) 1px, transparent 0),
-                radial-gradient(circle at 1px 1px, var(--color-pattern-dot) 1px, transparent 0);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
-            background-attachment: fixed; 
-        }
-        
-        /* Utility classes using CSS variables */
-        .theme-bg-primary { background-color: var(--color-bg-primary); }
-        .theme-bg-secondary { background-color: var(--color-bg-secondary); }
-        .theme-bg-card { background-color: var(--color-bg-card); }
-        .theme-text-primary { color: var(--color-text-primary); }
-        .theme-text-secondary { color: var(--color-text-secondary); }
-        .theme-border { border-color: var(--color-border-main); }
-        
-        /* NEW: Tag text color utility classes */
-        .theme-tag-blue-text { color: var(--color-tag-text-blue); }
-        .theme-tag-indigo-text { color: var(--color-tag-text-indigo); }
-        
-        /* Adjusted shadow for better theme contrast */
-        .theme-shadow-hover:hover { box-shadow: 0 0 25px var(--color-shadow-hover); }
-        .theme-accent-text { color: var(--color-accent); }
-        .theme-accent-border { border-color: var(--color-accent) !important; }
-
-        /* Custom focus styles for accessibility */
-        :focus-visible {
-            outline: 2px solid var(--color-text-primary); 
-            outline-offset: 2px;
-            border-radius: 4px;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
         }
 
-        /* Specific style for transparent sections to see the background pattern */
-        .pattern-overlay {
-            background-color: var(--color-bg-primary);
-        }
-        
-        /* Desktop: Make nav background slightly translucent to show pattern */
-        @media (min-width: 640px) {
-            .nav-bg-overlay {
-                background-color: var(--color-bg-primary);
-                opacity: 0.95; /* 95% opacity */
-                backdrop-filter: blur(5px);
-            }
+        h1, h2, h3, .font-heading {
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* Design elements for the image in the hero section */
-        .image-container {
-            position: relative;
-            /* To contain pseudo-elements */
-            width: 240px; /* Match w-60 */
-            height: 240px; /* Match h-60 */
+        /* --- THEME VARIABLES --- */
+        [data-theme='dark'] {
+            --color-bg-primary: #0a0a0a; /* Deepest Black */
+            --color-bg-secondary: #121212;
+            --color-card-glass: rgba(30, 41, 59, 0.7); /* Glassy Dark */
+            --color-text-primary: #f8fafc;
+            --color-text-secondary: #94a3b8;
+            --color-accent: #3b82f6; /* Blue-500 */
+            --color-accent-glow: rgba(59, 130, 246, 0.5);
+            --color-accent-secondary: #a855f7; /* Purple-500 */
+            --color-border: rgba(255, 255, 255, 0.1);
+            --bg-grid-color: rgba(255, 255, 255, 0.05);
         }
 
-        .image-container::before,
-        .image-container::after {
-            content: '';
+        [data-theme='light'] {
+            --color-bg-primary: #ffffff;
+            --color-bg-secondary: #f3f4f6;
+            --color-card-glass: rgba(255, 255, 255, 0.8); /* Glassy Light */
+            --color-text-primary: #0f172a;
+            --color-text-secondary: #475569;
+            --color-accent: #2563eb; /* Blue-600 */
+            --color-accent-glow: rgba(37, 99, 235, 0.3);
+            --color-accent-secondary: #7c3aed; /* Purple-600 */
+            --color-border: rgba(0, 0, 0, 0.1);
+            --bg-grid-color: rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- BACKGROUND EFFECTS --- */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, var(--bg-grid-color) 1px, transparent 1px),
+                              linear-gradient(to bottom, var(--bg-grid-color) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+        }
+
+        /* Ambient Glow Blobs */
+        .glow-blob {
             position: absolute;
-            border-radius: 50%; /* Circular shapes */
-            z-index: 0;
-            transition: all 0.5s ease-in-out;
-            pointer-events: none; /* Allows clicks to pass through to the image */
+            width: 300px;
+            height: 300px;
+            background: var(--color-accent);
+            filter: blur(100px);
+            opacity: 0.2;
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 10s infinite ease-in-out;
+        }
+        .blob-right { top: 10%; right: -100px; animation-delay: 0s; }
+        .blob-left { bottom: 10%; left: -100px; background: var(--color-accent-secondary); animation-delay: 5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
         }
 
-        .image-container::before {
-            width: 100%;
-            height: 100%;
-            top: 10px;
-            right: 10px;
-            border: 4px solid var(--color-accent);
-            transform: rotate(-20deg);
-            opacity: 0.6;
-        }
-
-        .image-container::after {
-            width: 100%;
-            height: 100%;
-            bottom: 10px;
-            left: 10px;
-            border: 4px solid var(--color-accent-secondary);
-            transform: rotate(20deg);
-            opacity: 0.6;
-        }
+        /* --- COMPONENTS --- */
         
-        .image-container:hover::before {
-             transform: rotate(-30deg) scale(1.05);
-             opacity: 0.8;
-             top: 0px;
-             right: 0px;
+        /* Glassmorphism Navbar */
+        .nav-glass {
+            background: var(--color-bg-primary);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--color-border);
+            background-color: rgba(var(--color-bg-primary), 0.8);
         }
 
-        .image-container:hover::after {
-             transform: rotate(30deg) scale(1.05);
-             opacity: 0.8;
-             bottom: 0px;
-             left: 0px;
+        /* Cards */
+        .glass-card {
+            background: var(--color-card-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--color-border);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        /* Card border enhancement */
-        .card-with-accent {
-            position: relative;
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-accent);
+            box-shadow: 0 10px 30px -10px var(--color-accent-glow);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+            color: white;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px var(--color-accent-glow);
+        }
+
+        /* --- INFINITE SCROLL TICKER --- */
+        .ticker-wrap {
+            width: 100%;
             overflow: hidden;
-            border-top: 2px solid var(--color-accent);
-            border-left: 2px solid var(--color-accent);
-            border-top-left-radius: 12px;
-            
+            white-space: nowrap;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
-
-        .card-with-accent:hover {
-            border-color: var(--color-accent); /* Highlight on hover */
+        .ticker {
+            display: flex; /* Changed from inline-block to flex for perfect alignment */
+            width: fit-content;
+            animation: ticker 40s linear infinite; /* Increased time slightly for smoother read */
         }
-
-        /* Project icon styling */
-        .project-icon-wrapper {
-            background-color: var(--color-accent); 
-            color: var(--color-bg-primary);
-            padding: 1rem;
-            border-radius: 0 0 0 12px; /* Match top-left card corner */
+        .ticker-item {
+            flex-shrink: 0; /* Prevent squishing */
             display: inline-flex;
-            margin-bottom: 1rem;
+            align-items: center;
+            padding: 0 3rem; /* Increased spacing */
+            font-size: 1.2rem;
+            color: var(--color-text-secondary);
+            font-weight: 600;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --- TEXT COLORS --- */
+        .text-theme-primary { color: var(--color-text-primary); }
+        .text-theme-secondary { color: var(--color-text-secondary); }
+        .text-accent { color: var(--color-accent); }
+        
+        /* Timeline */
+        .timeline-line {
             position: absolute;
+            left: 0;
             top: 0;
-            right: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--color-accent), var(--color-accent-secondary), transparent);
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="relative min-h-screen">
+
+    <!-- Background Elements -->
+    <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+    <div class="glow-blob blob-right"></div>
+    <div class="glow-blob blob-left"></div>
 
     <!-- Navbar -->
-<nav class="sticky top-0 z-50 nav-bg-overlay shadow-xl border-b theme-border transition duration-300">
+    <nav class="fixed top-0 w-full z-50 nav-glass transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo/Name -->
-                <a href="#hero" class="text-2xl font-bold theme-text-primary hover:theme-accent-text transition duration-300">
-                    Sharan P
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#hero" class="text-2xl font-bold font-heading bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500 hover:scale-105 transition-transform">
+                    Sharan.dev
                 </a>
                 
-                <!-- Desktop Menu & Theme Toggle -->
-                <div class="hidden sm:ml-6 sm:flex sm:space-x-8 items-center">
-                    <a href="#skills" class="theme-text-primary hover:theme-accent-text px-3 py-2 rounded-md text-sm font-medium transition duration-300">Skills</a>
-                    <a href="#projects" class="theme-text-primary hover:theme-accent-text px-3 py-2 rounded-md text-sm font-medium transition duration-300">Projects</a>
-                    <a href="#contact" class="theme-text-primary hover:theme-accent-text px-3 py-2 rounded-md text-sm font-medium transition duration-300">Contact</a>
+                <!-- Desktop Links -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-sm font-medium text-theme-secondary hover:text-accent transition-colors">About</a>
+                    <a href="#skills" class="text-sm font-medium text-theme-secondary hover:text-accent transition-colors">Skills</a>
+                    <a href="#projects" class="text-sm font-medium text-theme-secondary hover:text-accent transition-colors">Projects</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-full btn-primary font-medium text-sm">Contact Me</a>
                     
-                    <!-- Desktop Theme Toggle -->
-                    <button id="theme-toggle" class="p-2 rounded-full theme-text-primary hover:bg-gray-800 transition duration-300 ml-4 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-label="Toggle Dark/Light Mode">
-                        <i data-lucide="moon" id="moon-icon" class="h-6 w-6"></i>
-                        <i data-lucide="sun" id="sun-icon" class="h-6 w-6 hidden"></i>
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-white/10 text-theme-primary transition-colors">
+                        <i data-lucide="moon" id="moon-icon" class="w-5 h-5"></i>
+                        <i data-lucide="sun" id="sun-icon" class="w-5 h-5 hidden"></i>
                     </button>
                 </div>
-                
-                <!-- Mobile Menu Button & Theme Toggle -->
-                <div class="sm:hidden flex items-center">
-                    <!-- Mobile Theme Toggle -->
-                    <button id="mobile-theme-toggle" class="p-2 rounded-full theme-text-primary hover:bg-gray-800 transition duration-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-label="Toggle Dark/Light Mode">
-                        <i data-lucide="moon" id="mobile-moon-icon" class="h-6 w-6"></i>
-                        <i data-lucide="sun" id="mobile-sun-icon" class="h-6 w-6 hidden"></i>
+
+                <!-- Mobile Menu Btn -->
+                <div class="md:hidden flex items-center gap-4">
+                    <button id="mobile-theme-toggle" class="text-theme-primary">
+                        <i data-lucide="moon" id="mobile-moon-icon" class="w-6 h-6"></i>
+                        <i data-lucide="sun" id="mobile-sun-icon" class="w-6 h-6 hidden"></i>
                     </button>
-                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md theme-text-primary hover:text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white ml-2" aria-controls="mobile-menu" aria-expanded="false">
-                        <span class="sr-only">Open main menu</span>
-                        <i data-lucide="menu" id="menu-icon" class="block h-6 w-6"></i>
-                        <i data-lucide="x" id="close-icon" class="hidden h-6 w-6"></i>
+                    <button id="mobile-menu-btn" class="text-theme-primary">
+                        <i data-lucide="menu" class="w-7 h-7"></i>
                     </button>
                 </div>
             </div>
         </div>
-
-        <!-- Mobile Menu Panel -->
-<div class="sm:hidden hidden nav-bg-overlay" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#skills" class="theme-text-primary hover:bg-gray-800 hover:theme-accent-text block px-3 py-2 rounded-md text-base font-medium transition duration-300">Skills</a>
-                <a href="#projects" class="theme-text-primary hover:bg-gray-800 hover:theme-accent-text block px-3 py-2 rounded-md text-base font-medium transition duration-300">Projects</a>
-                <a href="#contact" class="theme-text-primary hover:bg-gray-800 hover:theme-accent-text block px-3 py-2 rounded-md text-base font-medium transition duration-300">Contact</a>
+        
+        <!-- Mobile Menu (Hidden default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-secondary border-t border-white/10 absolute w-full nav-glass">
+            <div class="px-4 py-6 space-y-4 flex flex-col items-center">
+                <a href="#about" class="text-theme-primary hover:text-accent font-medium">About</a>
+                <a href="#skills" class="text-theme-primary hover:text-accent font-medium">Skills</a>
+                <a href="#projects" class="text-theme-primary hover:text-accent font-medium">Projects</a>
+                <a href="#contact" class="text-accent font-bold">Contact</a>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
-        <!-- Hero Section -->
-        <section id="hero" class="pt-8 pb-16 md:pt-20 md:pb-24 flex flex-col md:flex-row items-center justify-between gap-12 pattern-overlay rounded-xl p-6 md:p-10">
-            
-            <!-- Text Content -->
-            <div class="w-full md:w-1/2 text-center md:text-left order-2 md:order-1">
+    <main class="relative z-10 pt-24 pb-12 overflow-hidden">
+        
+        <!-- HERO SECTION -->
+        <section id="hero" class="min-h-[85vh] flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
                 
-                <p class="text-xl md:text-2xl font-semibold theme-text-primary mb-2">Hello, I'm</p>
+                <!-- Text Content -->
+                <div class="order-2 md:order-1" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-bold uppercase tracking-wider mb-6">
+                        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                        Available for work
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-7xl font-bold text-theme-primary mb-6 leading-tight">
+                        Building the <br>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-gradient">Future Web.</span>
+                    </h1>
+                    
+                    <p class="text-xl text-theme-secondary mb-8 max-w-lg leading-relaxed">
+                        I'm <span class="text-theme-primary font-semibold">Sharan P</span>, a Python Developer and Founder of 
+                        <a href="https://sparklance-solutions.netlify.app/" target="_blank" class="text-accent hover:underline decoration-2 underline-offset-4">SparkLance Solutions</a>. 
+                        I craft efficient applications and modern web experiences.
+                    </p>
 
-                <!-- Name -->
-                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight theme-text-primary mb-2">
-                    Sharan P
-                </h1>
-                
-                <!-- Title -->
-                <h2 class="text-2xl md:text-3xl font-bold theme-accent-text mb-4">
-                    Student at Panimalar Engineering College
-                </h2>
-
-                <!-- Bio -->
-                <p class="text-xl theme-text-primary mb-8 max-w-lg md:max-w-full mx-auto md:mx-0">
-                    I’m a passionate developer focused on Python programming and modern web development. I enjoy building efficient applications and creating clean, responsive web solutions. I am also one of the founders of 
-                    <a href="https://sparklance-solutions.netlify.app/" target="_blank" rel="noopener noreferrer" class="theme-accent-text hover:underline font-bold transition duration-300 inline-flex items-center">
-                        SparkLance Solutions <i data-lucide="external-link" class="ml-1 h-5 w-5"></i>
-                    </a>, which focuses on delivering innovative software solutions.
-                </p>
-                <div class="flex space-x-4 justify-center md:justify-start">
-                    <!-- CTA Button -->
-                    <a href="#contact" class="px-6 py-3 bg-gray-800 text-white font-medium rounded-lg shadow-lg hover:bg-gray-700 transition duration-300 transform hover:scale-105 border border-white">
-                        Contact Me
-                    </a>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#projects" class="btn-primary px-8 py-4 rounded-lg font-bold flex items-center gap-2 shadow-lg hover:shadow-blue-500/50">
+                            View Work <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://github.com/Sharan242007" target="_blank" class="px-8 py-4 rounded-lg border border-gray-500 text-theme-primary hover:bg-white/5 font-medium flex items-center gap-2 transition-all">
+                            <i data-lucide="github" class="w-5 h-5"></i> GitHub
+                        </a>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="grid grid-cols-3 gap-6 mt-12 border-t border-gray-800/50 pt-8">
+                        <div>
+                            <h4 class="text-3xl font-bold text-theme-primary">2+</h4>
+                            <p class="text-sm text-theme-secondary">Years Coding</p>
+                        </div>
+                        <div>
+                            <h4 class="text-3xl font-bold text-theme-primary">4+</h4>
+                            <p class="text-sm text-theme-secondary">Projects</p>
+                        </div>
+                        <div>
+                            <h4 class="text-3xl font-bold text-theme-primary">100%</h4>
+                            <p class="text-sm text-theme-secondary">Dedication</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Profile Image -->
-            <div class="flex-shrink-0 order-1 md:order-2 image-container relative">
-                <img src="sharan.jpg" 
-                     alt="Sharan P Profile Picture" 
-                     class="rounded-full shadow-2xl w-60 h-60 object-cover border-4 theme-border relative z-10"
-                     onerror="this.onerror=null; this.src='https://placehold.co/240x240/1f2937/ccf0ff?text=Image+Not+Found';">
+
+                <!-- Image / Visual -->
+                <div class="order-1 md:order-2 flex justify-center relative" data-aos="zoom-in" data-aos-duration="1200">
+                    <!-- Rotating Circles behind image -->
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div class="w-[300px] h-[300px] border border-blue-500/20 rounded-full absolute animate-[spin_10s_linear_infinite]"></div>
+                        <div class="w-[340px] h-[340px] border border-purple-500/20 rounded-full absolute animate-[spin_15s_linear_infinite_reverse]"></div>
+                    </div>
+                    
+                    <div class="relative w-72 h-72 md:w-96 md:h-96 rounded-full p-2 border-2 border-dashed border-gray-600/50">
+                        <img src="sharan.jpg" 
+                             alt="Sharan P" 
+                             class="w-full h-full object-cover rounded-full shadow-2xl hover:scale-105 transition-transform duration-500"
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x400/111/FFF?text=Sharan';">
+                        
+                        <!-- Floating Badges -->
+                        <div class="absolute -bottom-4 -right-4 bg-gray-800 p-4 rounded-xl shadow-xl border border-gray-700 flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
+                            <div class="bg-green-500/20 p-2 rounded-lg text-green-500">
+                                <i data-lucide="code-2" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400">Expert in</p>
+                                <p class="text-sm font-bold text-white">Python</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-        
-        <hr class="my-12 border-t-2 theme-accent-border opacity-30">
 
-        <!-- Skills Section -->
-        <section id="skills" class="py-16 theme-bg-secondary rounded-xl shadow-2xl p-8 mt-12 opacity-[0.98]">
-            <h2 class="text-4xl font-bold text-center theme-text-primary mb-12">My Skills</h2>
+        <!-- INFINITE TECH TICKER -->
+        <div class="py-8 bg-white/5 border-y border-white/5 mb-20 backdrop-blur-sm">
+            <div class="ticker-wrap">
+                <div class="ticker">
+                    <!-- ORIGINAL SET -->
+                    <span class="ticker-item"><i data-lucide="database" class="w-5 h-5 mr-2 text-blue-500"></i> MongoDB</span>
+                    <span class="ticker-item"><i data-lucide="file-code" class="w-5 h-5 mr-2 text-yellow-500"></i> Python</span>
+                    <span class="ticker-item"><i data-lucide="layout" class="w-5 h-5 mr-2 text-orange-500"></i> HTML5/CSS3</span>
+                    <span class="ticker-item"><i data-lucide="coffee" class="w-5 h-5 mr-2 text-red-500"></i> Java</span>
+                    <span class="ticker-item"><i data-lucide="server" class="w-5 h-5 mr-2 text-green-500"></i> Flask</span>
+                    <span class="ticker-item"><i data-lucide="terminal" class="w-5 h-5 mr-2 text-purple-500"></i> Shell</span>
+                    <span class="ticker-item"><i data-lucide="git-branch" class="w-5 h-5 mr-2 text-white"></i> Git</span>
+                    
+                    <!-- DUPLICATE SET (Must match EXACTLY for seamless loop) -->
+                    <span class="ticker-item"><i data-lucide="database" class="w-5 h-5 mr-2 text-blue-500"></i> MongoDB</span>
+                    <span class="ticker-item"><i data-lucide="file-code" class="w-5 h-5 mr-2 text-yellow-500"></i> Python</span>
+                    <span class="ticker-item"><i data-lucide="layout" class="w-5 h-5 mr-2 text-orange-500"></i> HTML5/CSS3</span>
+                    <span class="ticker-item"><i data-lucide="coffee" class="w-5 h-5 mr-2 text-red-500"></i> Java</span>
+                    <span class="ticker-item"><i data-lucide="server" class="w-5 h-5 mr-2 text-green-500"></i> Flask</span>
+                    <span class="ticker-item"><i data-lucide="terminal" class="w-5 h-5 mr-2 text-purple-500"></i> Shell</span>
+                    <span class="ticker-item"><i data-lucide="git-branch" class="w-5 h-5 mr-2 text-white"></i> Git</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-sm font-bold text-accent tracking-widest uppercase mb-2">My Arsenal</h2>
+                <h3 class="text-4xl font-bold text-theme-primary">Technical Expertise</h3>
+            </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                
                 <!-- Python Card -->
-                <div class="theme-bg-card p-6 rounded-xl shadow-md transition duration-300 theme-shadow-hover theme-border card-with-accent">
-                    <h3 class="text-2xl font-semibold theme-text-primary mb-4 flex items-center">
-                        <!-- Python Icon -->
-                        <i data-lucide="python" class="mr-2 h-7 w-7 theme-accent-text"></i> Python Developer
-                    </h3>
-                    <ul class="space-y-3 theme-text-primary list-none">
-                        <li class="flex items-start">
-                            <!-- Bullet -->
-                            <span class="theme-text-secondary mr-2">&bull;</span>
-                            <span>Python Language Fundamentals</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="theme-text-secondary mr-2">&bull;</span>
-                            <span>Flask Web Development</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="theme-text-secondary mr-2">&bull;</span>
-                            <span>GUI Development (Tkinter)</span>
-                        </li>
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="braces" class="w-24 h-24 text-blue-500"></i>
+                    </div>
+                    <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-500 mb-6">
+                        <i data-lucide="file-code-2" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-theme-primary mb-4">Python Development</h4>
+                    <ul class="space-y-3 text-theme-secondary">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500"></i> Core Python Logic</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500"></i> Flask Web Apps</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500"></i> Tkinter GUI</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500"></i> Data Automation</li>
                     </ul>
                 </div>
-                
+
                 <!-- Java Card -->
-                <div class="theme-bg-card p-6 rounded-xl shadow-md transition duration-300 theme-shadow-hover theme-border card-with-accent">
-                    <h3 class="text-2xl font-semibold theme-text-primary mb-4 flex items-center">
-                        <!-- Java Icon (using Server as a placeholder) -->
-                        <i data-lucide="server" class="mr-2 h-6 w-6 theme-accent-text"></i> Java Developer
-                    </h3>
-                    <ul class="space-y-3 theme-text-primary list-none">
-                        <li class="flex items-start">
-                            <span class="theme-text-secondary mr-2">&bull;</span>
-                            <span>Java</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="theme-text-secondary mr-2">&bull;</span>
-                            <span>Java Swing (GUI)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="theme-text-secondary mr-2">&bull;</span>
-                            <span>Object-Oriented Programming (OOP)</span>
-                        </li>
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="coffee" class="w-24 h-24 text-red-500"></i>
+                    </div>
+                    <div class="w-14 h-14 bg-red-500/20 rounded-xl flex items-center justify-center text-red-500 mb-6">
+                        <i data-lucide="cpu" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-theme-primary mb-4">Java Development</h4>
+                    <ul class="space-y-3 text-theme-secondary">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> OOP Concepts</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Java Swing (GUI)</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Enterprise Logic</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Database Connectivity</li>
                     </ul>
                 </div>
 
                 <!-- Frontend Card -->
-                <div class="theme-bg-card p-6 rounded-xl shadow-md transition duration-300 theme-shadow-hover theme-border card-with-accent">
-                    <h3 class="text-2xl font-semibold theme-text-primary mb-4 flex items-center">
-                        <!-- Frontend Icon -->
-                        <i data-lucide="monitor" class="mr-2 h-6 w-6 theme-accent-text"></i> Front End Developer
-                    </h3>
-                    <ul class="space-y-3 theme-text-primary list-none">
-                        <li class="flex items-start">
-                            <span class="theme-text-secondary mr-2">&bull;</span>
-                            <span>HTML5</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="theme-text-secondary mr-2">&bull;</span>
-                            <span>CSS</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="theme-text-secondary mr-2">&bull;</span>
-                            <span>JavaScript</span>
-                        </li>
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="monitor" class="w-24 h-24 text-purple-500"></i>
+                    </div>
+                    <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center text-purple-500 mb-6">
+                        <i data-lucide="layout" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-theme-primary mb-4">Frontend Web</h4>
+                    <ul class="space-y-3 text-theme-secondary">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-500"></i> HTML5 Semantic</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-500"></i> Modern CSS3</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-500"></i> Interactive JS</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-500"></i> Responsive Design</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <hr class="my-12 border-t-2 theme-accent-border opacity-30">
-
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-16">
-            <h2 class="text-4xl font-bold text-center theme-text-primary mb-12">Featured Projects</h2>
-            <div class="grid md:grid-cols-2 gap-10">
-
-                <!-- Project 1: Student Information System (Blue Accent) -->
-                <div class="theme-bg-secondary rounded-xl shadow-2xl overflow-hidden transform transition duration-500 hover:scale-[1.02] border theme-border opacity-[0.98] card-with-accent relative p-6">
-                    
-                    <!-- Icon in top right corner (Uses Primary Blue Accent) -->
-                    <div class="project-icon-wrapper">
-                         <i data-lucide="database" class="h-8 w-8"></i>
-                    </div>
-
-                    <div class="pt-16">
-                        <!-- Title -->
-                        <h3 class="text-2xl font-semibold theme-text-primary mb-3">Student Information System</h3>
-
-                        <!-- Description -->
-                        <p class="theme-text-secondary mb-4">
-                            A robust desktop application for managing student records, grades, and administrative tasks, built with a rich Graphical Interface (GUI) using Java Swing and utilizing MongoDB for flexible, non-relational data storage.
-                        </p>
-                        
-                        <!-- Separator -->
-                        <div class="border-t border-gray-700 pt-4 mt-4">
-                            <!-- Tags/Stack (Blue Scheme) -->
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <!-- UPDATED: Using theme-tag-blue-text -->
-                                <span class="bg-blue-600/20 theme-tag-blue-text text-xs font-medium px-2.5 py-0.5 rounded-full border border-blue-600">Java Swing</span>
-                                <span class="bg-blue-600/20 theme-tag-blue-text text-xs font-medium px-2.5 py-0.5 rounded-full border border-blue-600">MongoDB</span>
-                                <span class="bg-blue-600/20 theme-tag-blue-text text-xs font-medium px-2.5 py-0.5 rounded-full border border-blue-600">Desktop GUI</span>
-                            </div>
-                            
-                            <!-- Links -->
-                            <a href="https://github.com/Sharan242007/Project.git" target="_blank" rel="noopener noreferrer" class="theme-accent-text hover:underline font-medium flex items-center transition duration-300">
-                                View Project on GitHub <i data-lucide="github" class="ml-1 h-4 w-4"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: Railway Reservation System (Purple/Indigo Accent) -->
-                <div class="theme-bg-secondary rounded-xl shadow-2xl overflow-hidden transform transition duration-500 hover:scale-[1.02] border theme-border opacity-[0.98] card-with-accent relative p-6">
-                    
-                    <!-- Icon in top right corner (Uses Primary Blue Accent) -->
-                    <div class="project-icon-wrapper">
-                        <i data-lucide="bus-front" class="h-8 w-8"></i>
-                    </div>
-
-                    <div class="pt-16">
-                        <!-- Title -->
-                        <h3 class="text-2xl font-semibold theme-text-primary mb-3">Railway Reservation System</h3>
-
-                        <!-- Description -->
-                        <p class="theme-text-secondary mb-4">
-                            A functional reservation system for booking and managing train tickets. Developed as a web application using Python's Flask framework for the backend and MongoDB for flexible NoSQL data management.
-                        </p>
-                        
-                        <!-- Separator -->
-                        <div class="border-t border-gray-700 pt-4 mt-4">
-                            <!-- Tags/Stack (Indigo Scheme) -->
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <!-- UPDATED: Using theme-tag-indigo-text -->
-                                <span class="bg-indigo-600/20 theme-tag-indigo-text text-xs font-medium px-2.5 py-0.5 rounded-full border border-indigo-600">Python/Flask</span>
-                                <span class="bg-indigo-600/20 theme-tag-indigo-text text-xs font-medium px-2.5 py-0.5 rounded-full border border-indigo-600">Web App</span>
-                                <span class="bg-indigo-600/20 theme-tag-indigo-text text-xs font-medium px-2.5 py-0.5 rounded-full border border-indigo-600">MongoDB</span>
-                            </div>
-
-                            <!-- Links -->
-                            <a href="https://github.com/Sharan242007/Railway-Reservation.git" target="_blank" rel="noopener noreferrer" class="theme-accent-text hover:underline font-medium flex items-center transition duration-300">
-                                View Project on GitHub <i data-lucide="github" class="ml-1 h-4 w-4"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
+        <!-- TIMELINE SECTION (NEW) -->
+        <section id="about" class="max-w-4xl mx-auto px-4 py-20">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-sm font-bold text-accent tracking-widest uppercase mb-2">My Path</h2>
+                <h3 class="text-4xl font-bold text-theme-primary">Education & Experience</h3>
             </div>
-        </section>
-        <!-- End Projects Section -->
 
-        <hr class="my-12 border-t-2 theme-accent-border opacity-30">
-
-
-        <!-- Contact Section (Updated to use 4 cards) -->
-        <section id="contact" class="py-16">
-            <h2 class="text-4xl font-bold text-center theme-text-primary mb-12">Get In Touch</h2>
-            <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
-
-                <!-- 1. Email Contact Card -->
-                <a href="mailto:sharan12318@gmail.com" class="theme-bg-secondary p-6 rounded-xl shadow-xl border theme-border theme-shadow-hover transition duration-300 flex flex-col items-center text-center space-y-3 transform hover:scale-[1.02]">
-                    <i data-lucide="mail" class="h-10 w-10 theme-accent-text"></i>
-                    <h3 class="text-xl font-bold theme-text-primary">Email</h3>
-                    <span class="theme-text-secondary break-all">sharan12318@gmail.com</span>
-                </a>
-
-                <!-- 2. Instagram Contact Card -->
-                <a href="https://www.instagram.com/sharan_242007?igsh=Ymw0ZjZrenpyYmpy" target="_blank" rel="noopener noreferrer" class="theme-bg-secondary p-6 rounded-xl shadow-xl border theme-border theme-shadow-hover transition duration-300 flex flex-col items-center text-center space-y-3 transform hover:scale-[1.02]">
-                    <i data-lucide="instagram" class="h-10 w-10 theme-accent-text"></i>
-                    <h3 class="text-xl font-bold theme-text-primary">Instagram</h3>
-                    <span class="theme-text-secondary">@sharan_242007</span>
-                </a>
-
-                <!-- 3. LinkedIn Contact Card -->
-                <a href="https://www.linkedin.com/in/sharan-p-6a994735b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="theme-bg-secondary p-6 rounded-xl shadow-xl border theme-border theme-shadow-hover transition duration-300 flex flex-col items-center text-center space-y-3 transform hover:scale-[1.02]">
-                    <i data-lucide="linkedin" class="h-10 w-10 theme-accent-text"></i>
-                    <h3 class="text-xl font-bold theme-text-primary">LinkedIn</h3>
-                    <span class="theme-text-secondary">Sharan P</span>
-                </a>
+            <div class="relative pl-8 md:pl-0">
+                <!-- Vertical Line -->
+                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-700/50 transform -translate-x-1/2"></div>
                 
-                <!-- 4. SparLance Solutions Card (New Separate Box) -->
-                <a href="https://sparklance-solutions.netlify.app/" target="_blank" rel="noopener noreferrer" class="theme-bg-secondary p-6 rounded-xl shadow-xl border theme-border theme-shadow-hover transition duration-300 flex flex-col items-center text-center space-y-3 transform hover:scale-[1.02]">
-                    <i data-lucide="briefcase" class="h-10 w-10 theme-accent-text"></i>
-                    <h3 class="text-xl font-bold theme-text-primary">SparkLance Solutions</h3>
-                    <span class="theme-text-secondary">Visit Our Website</span>
-                </a>
+                <!-- Item 1 (Right) -->
+                <div class="relative md:flex items-center justify-between mb-12 group" data-aos="fade-left">
+                    <div class="hidden md:block w-5/12"></div> <!-- Spacer -->
+                    <div class="absolute left-[-39px] md:left-1/2 md:-ml-[6px] w-3 h-3 rounded-full bg-accent border-4 border-gray-900 z-10"></div>
+                    <div class="md:w-5/12 glass-card p-6 rounded-xl border-l-4 border-l-blue-500">
+                        <span class="text-xs font-mono text-accent mb-2 block">Present</span>
+                        <h4 class="text-xl font-bold text-theme-primary">Student & Founder</h4>
+                        <p class="text-sm text-theme-secondary mb-2">Panimalar Engineering College / SparkLance</p>
+                        <p class="text-gray-400 text-sm">Pursuing Engineering while leading SparkLance Solutions to deliver software projects.</p>
+                    </div>
+                </div>
 
+                <!-- Item 2 (Left) -->
+                <div class="relative md:flex items-center justify-between mb-12 group" data-aos="fade-right">
+                    <div class="md:w-5/12 glass-card p-6 rounded-xl border-l-4 border-l-purple-500 md:text-right">
+                        <span class="text-xs font-mono text-purple-400 mb-2 block">2023</span>
+                        <h4 class="text-xl font-bold text-theme-primary">Full Stack Journey Began</h4>
+                        <p class="text-sm text-theme-secondary mb-2">Self-Taught & Coursework</p>
+                        <p class="text-gray-400 text-sm">Started deep diving into Python, Java and Web technologies, building projects for practical knowledge.</p>
+                    </div>
+                    <div class="absolute left-[-39px] md:left-1/2 md:-ml-[6px] w-3 h-3 rounded-full bg-purple-500 border-4 border-gray-900 z-10"></div>
+                    <div class="hidden md:block w-5/12"></div> <!-- Spacer -->
+                </div>
             </div>
         </section>
-        <!-- End Contact Section -->
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-white/5 backdrop-blur-sm">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12" data-aos="fade-up">
+                <div>
+                    <h2 class="text-sm font-bold text-accent tracking-widest uppercase mb-2">Portfolio</h2>
+                    <h3 class="text-4xl font-bold text-theme-primary">Featured Projects</h3>
+                </div>
+                <a href="https://github.com/Sharan242007" class="text-theme-secondary hover:text-white flex items-center gap-2 mt-4 md:mt-0 group transition-colors">
+                    See all on GitHub <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- Project 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden group hover:scale-[1.02] transition-transform duration-500" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-gradient-to-br from-blue-900 to-slate-900 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+                        <i data-lucide="database" class="w-16 h-16 text-blue-400 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-theme-primary mb-2">Student Information System</h3>
+                        <p class="text-theme-secondary mb-6 text-sm leading-relaxed">
+                            A desktop GUI application for managing student records effectively. Features a Swing interface and MongoDB backend for handling large datasets securely.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 text-xs rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30">Java Swing</span>
+                            <span class="px-3 py-1 text-xs rounded-full bg-green-500/20 text-green-300 border border-green-500/30">MongoDB</span>
+                            <span class="px-3 py-1 text-xs rounded-full bg-gray-700 text-gray-300">Desktop</span>
+                        </div>
+                        <a href="https://github.com/Sharan242007/Project.git" target="_blank" class="text-white font-medium flex items-center gap-2 hover:gap-3 transition-all">
+                            View Code <i data-lucide="github" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden group hover:scale-[1.02] transition-transform duration-500" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-gradient-to-br from-indigo-900 to-slate-900 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+                        <i data-lucide="train" class="w-16 h-16 text-indigo-400 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-theme-primary mb-2">Railway Reservation System</h3>
+                        <p class="text-theme-secondary mb-6 text-sm leading-relaxed">
+                            A complete web booking platform. Users can search trains, book tickets, and manage reservations. Built with Flask for robust routing.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 text-xs rounded-full bg-yellow-500/20 text-yellow-300 border border-yellow-500/30">Python Flask</span>
+                            <span class="px-3 py-1 text-xs rounded-full bg-green-500/20 text-green-300 border border-green-500/30">MongoDB</span>
+                            <span class="px-3 py-1 text-xs rounded-full bg-gray-700 text-gray-300">Web App</span>
+                        </div>
+                        <a href="https://github.com/Sharan242007/Railway-Reservation.git" target="_blank" class="text-white font-medium flex items-center gap-2 hover:gap-3 transition-all">
+                            View Code <i data-lucide="github" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT & CTA -->
+        <section id="contact" class="max-w-4xl mx-auto px-4 py-24 text-center">
+            <div class="glass-card p-12 rounded-3xl relative overflow-hidden" data-aos="zoom-in">
+                <!-- Background Decoration -->
+                <div class="absolute -top-24 -left-24 w-48 h-48 bg-accent blur-3xl opacity-20"></div>
+                
+                <h2 class="text-4xl md:text-5xl font-bold text-theme-primary mb-6">Ready to Collaborate?</h2>
+                <p class="text-lg text-theme-secondary mb-10 max-w-xl mx-auto">
+                    Whether you have a question, a project idea, or just want to say hi, I'm always open to new opportunities.
+                </p>
+                
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="mailto:sharan12318@gmail.com" class="btn-primary px-8 py-4 rounded-xl font-bold flex items-center gap-2">
+                        <i data-lucide="mail"></i> Send Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/sharan-p-6a994735b" target="_blank" class="px-8 py-4 rounded-xl border border-gray-600 text-theme-primary hover:bg-white/10 font-bold flex items-center gap-2 transition-all">
+                        <i data-lucide="linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://sparklance-solutions.netlify.app/" target="_blank" class="px-8 py-4 rounded-xl border border-gray-600 text-theme-primary hover:bg-white/10 font-bold flex items-center gap-2 transition-all">
+                        <i data-lucide="briefcase"></i> SparkLance
+                    </a>
+                </div>
+            </div>
+        </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="nav-bg-overlay theme-text-primary mt-12 border-t theme-border">
-        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-center items-center">
-            <p class="text-center md:text-left mb-4 md:mb-0 theme-text-primary">&copy; <span id="current-year"></span> Sharan P. All rights reserved.</p>
+    <!-- FOOTER -->
+    <footer class="border-t border-white/10 py-8 bg-black">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://github.com/Sharan242007/" target="_blank" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                <a href="https://www.instagram.com/sharan_242007?igsh=MWJvNDFodmk3NHRncw==" target="_blank" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="https://www.linkedin.com/in/sharan-p-6a994735b" target="_blank" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+            </div>
+            <p class="text-gray-500 text-sm mb-4">
+                &copy; <span id="year"></span> Sharan P. Built with <span class="text-red-500">❤</span> and lots of Code.
+            </p>
+            <a href="https://github.com/Sharan242007/sharan-portfolio" target="_blank" class="inline-flex items-center gap-2 text-xs text-gray-600 hover:text-accent transition-colors border border-gray-800 rounded-full px-4 py-1 hover:border-accent">
+                <i data-lucide="git-fork" class="w-3 h-3"></i> View Portfolio Repository
+            </a>
         </div>
     </footer>
 
-    <!-- JavaScript for Interactivity -->
-<script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize Lucide icons
-            lucide.createIcons();
-
-            // --- THEME TOGGLE LOGIC ---
-            const html = document.documentElement;
-            const toggleButton = document.getElementById('theme-toggle');
-            const mobileToggleButton = document.getElementById('mobile-theme-toggle');
-
-            // Icon references for desktop and mobile toggles
-            const moonIcon = document.getElementById('moon-icon');
-            const sunIcon = document.getElementById('sun-icon');
-            const mobileMoonIcon = document.getElementById('mobile-moon-icon');
-            const mobileSunIcon = document.getElementById('mobile-sun-icon');
-
-            // Function to apply the theme based on the theme string ('dark' or 'light')
-            function applyTheme(theme) {
-                if (theme === 'light') {
-                    html.setAttribute('data-theme', 'light');
-                    localStorage.setItem('theme', 'light');
-                    // In Light Mode, show MOON icon (to suggest switching back to Dark)
-                    moonIcon.classList.remove('hidden');
-                    sunIcon.classList.add('hidden');
-                    mobileMoonIcon.classList.remove('hidden');
-                    mobileSunIcon.classList.add('hidden');
-                } else {
-                    html.setAttribute('data-theme', 'dark');
-                    localStorage.setItem('theme', 'dark');
-                    // In Dark Mode, show SUN icon (to suggest switching to Light)
-                    moonIcon.classList.add('hidden');
-                    sunIcon.classList.remove('hidden');
-                    mobileMoonIcon.classList.add('hidden');
-                    mobileSunIcon.classList.remove('hidden');
-                }
-                lucide.createIcons(); // Re-render icons
-            }
-
-            // Function to toggle the theme
-            function toggleTheme() {
-                const currentTheme = html.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                applyTheme(newTheme);
-            }
-
-            // Apply theme on initial load (check local storage or default to dark)
-            const storedTheme = localStorage.getItem('theme');
-            if (storedTheme) {
-                applyTheme(storedTheme);
-            } else {
-                // Default to dark theme if no preference is stored
-                applyTheme('dark');
-            }
-
-            // Event listeners for theme toggle buttons
-            toggleButton.addEventListener('click', toggleTheme);
-            mobileToggleButton.addEventListener('click', toggleTheme);
-
-            // --- MOBILE MENU LOGIC ---
-            const menuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuIcon = document.getElementById('menu-icon');
-            const closeIcon = document.getElementById('close-icon');
-
-            function toggleMobileMenu() {
-                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
-                menuButton.setAttribute('aria-expanded', !isExpanded);
-                mobileMenu.classList.toggle('hidden');
-                
-                // Toggle Lucide icons for the menu button itself
-                if (!isExpanded) {
-                    // Menu opened: hide menu, show close
-                    menuIcon.style.display = 'none';
-                    closeIcon.style.display = 'block';
-                } else {
-                    // Menu closed: show menu, hide close
-                    menuIcon.style.display = 'block';
-                    closeIcon.style.display = 'none';
-                }
-                
-                lucide.createIcons(); // Re-create icons to ensure visibility
-            }
-
-            // Close mobile menu when a link is clicked
-            mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    // Force close the menu
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        toggleMobileMenu();
-                    }
-                });
-            });
-            menuButton.addEventListener('click', toggleMobileMenu);
-
-
-            // Set current year in footer
-            document.getElementById('current-year').textContent = new Date().getFullYear();
+    <!-- Scripts -->
+    
+    <!-- AOS Animation Init -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            once: true, // Animation happens once
+            offset: 100, // Trigger 100px before element is visible
+            duration: 800, // Animation duration
+            easing: 'ease-out-cubic',
         });
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Footer Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // --- Theme Logic ---
+        const html = document.documentElement;
+        const toggleBtn = document.getElementById('theme-toggle');
+        const mobileToggleBtn = document.getElementById('mobile-theme-toggle');
+        
+        // Icons
+        const sun = document.getElementById('sun-icon');
+        const moon = document.getElementById('moon-icon');
+        const mSun = document.getElementById('mobile-sun-icon');
+        const mMoon = document.getElementById('mobile-moon-icon');
+
+        function updateIcons(theme) {
+            if(theme === 'dark') {
+                sun.classList.remove('hidden');
+                moon.classList.add('hidden');
+                mSun.classList.remove('hidden');
+                mMoon.classList.add('hidden');
+            } else {
+                sun.classList.add('hidden');
+                moon.classList.remove('hidden');
+                mSun.classList.add('hidden');
+                mMoon.classList.remove('hidden');
+            }
+        }
+
+        function toggleTheme() {
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            updateIcons(next);
+        }
+
+        // Init Theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        updateIcons(savedTheme);
+
+        toggleBtn.addEventListener('click', toggleTheme);
+        mobileToggleBtn.addEventListener('click', toggleTheme);
+
+        // --- Mobile Menu ---
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Toggle icon visual if needed
+        });
+        
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
     </script>
 </body>
 </html>
